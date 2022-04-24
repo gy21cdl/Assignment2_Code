@@ -16,7 +16,7 @@ df = pd.read_csv (r'D:\UniversityOfLeeds\Year1\GEOG5003M_ProgrammingForGeographi
 
 
 ################################################
-
+'''
 #Sample Stats
 count_samp_all = df['Sample No'].count()
 max_samp_all = df['Sample No'].max()
@@ -38,25 +38,43 @@ count_samp_type = df.groupby(['Sample Type']).count()
 print ("Count of values, grouped by the Sample Type:" + str(count_samp_type))
 
 #https://datatofish.com/use-pandas-to-calculate-stats-from-an-imported-csv-file/
-
+'''
 ###################################################
 
 
-#Plot all data
+#Plot 1 - All data
+#Use rcParams to refine the plot size
 from matplotlib import rcParams
 rcParams['figure.figsize'] = 10,8 #increase figure size
+
+# Define data series and axis
 x = df['X_m']
 y = df['Y_m']
-#plt.legend(loc=2) # legend and location - not currently working for this
-plt.grid(True,color='k', linestyle=':') #plot grid 
+#plt.xlim(297500,312500) #axis value limits if required
+#plt.ylim() #axis value limits if required
+#plt.xticks([300000,304000,308000]) #limiting axis plot
+#plt.yticks([4,4.04,4.08]) #limiting axis plot - not working atm
+
+# Define graph features
 plt.title("Geographical Plot of All Data")
 plt.xlabel("X_UTM") #x axis label
 plt.ylabel("Y_UTM") #y axis label
-#plt.xlim(297500,312500) #axis value limits if required
-#plt.ylim() #axis value limits if required
-plt.xticks([300000,304000,308000]) #limiting axis plot
-#plt.yticks([4,4.04,4.08]) #limiting axis plot - not working atm
-plt.scatter(x, y, color = 'red')
+plt.grid(True,color='k', linestyle=':') #plot grid 
+plt.legend(loc=2) # legend and location - not currently working for this
+
+# Define data Subset
+#plt.scatter(x, y, color = 'red') #single colour plot
+#fig, ax = plt.subplots()
+#colors = {'BLK':'red', 'DUP':'green', 'CRM':'blue', 'NRM':'yellow'}
+#grouped = df.groupby('Sample Type')
+#for key, group in grouped:
+#    group.plot(ax=ax, kind='scatter', grid=True, x=('X_m'), y=('Y_m'), label=key, color=colors[key])
+
+plt.subplot()
+grouped = df.groupby('Sample Type')
+colors = {'BLK':'red', 'DUP':'green', 'CRM':'blue', 'NRM':'yellow'}
+
+
 plt.show()
 
 #y  = {'f(x)': [2,4,6,8], 'g(x)':[4,2,-2,6]}
