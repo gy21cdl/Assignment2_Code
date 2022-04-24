@@ -7,8 +7,8 @@ Created on Sun Apr 24 10:51:27 2022
 
 import pandas as pd
 
-y = [2,4,6,8]
+y  = {'f(x)': [2,4,6,8]}
 x = [1,2,3,4]
 
 graph = pd.DataFrame(y,x)
-graph.plot(kind='line')
+graph.plot(kind='line',grid = True, title='My Graph',ylabel='my y title',xlabel ='my x title')
