@@ -15,6 +15,33 @@ df = pd.read_csv (r'D:\UniversityOfLeeds\Year1\GEOG5003M_ProgrammingForGeographi
 #print (df) #print check
 
 
+################################################
+
+#Sample Stats
+count_samp_all = df['Sample No'].count()
+max_samp_all = df['Sample No'].max()
+min_samp_all = df['Sample No'].min()
+mean_Au_all = df['Au_ppm'].mean()
+mean_Cu_all = df['Cu_ppm'].mean()
+mean_Pb_all = df['Pb_ppm'].mean()
+mean_Zn_all = df['Zn_ppm'].mean()
+
+print("Total number of samples equals"+" "+str(count_samp_all))
+print("Maximum sample number is"+" "+str(max_samp_all))
+print("Minimum sample number is"+" "+str(min_samp_all))
+print("Mean Au value is"+" "+str(mean_Au_all))
+print("Mean Cu value is"+" "+str(mean_Cu_all))
+print("Mean Pb value is"+" "+str(mean_Pb_all))
+print("Mean Zn value is"+" "+str(mean_Zn_all))
+
+count_samp_type = df.groupby(['Sample Type']).count()
+print ("Count of values, grouped by the Sample Type:" + str(count_samp_type))
+
+#https://datatofish.com/use-pandas-to-calculate-stats-from-an-imported-csv-file/
+
+###################################################
+
+
 #Plot all data
 from matplotlib import rcParams
 rcParams['figure.figsize'] = 10,8 #increase figure size
@@ -37,3 +64,9 @@ plt.show()
 
 #graph = pd.DataFrame(y,x)
 #graph.plot(kind='scatter',grid = True, title='My Graph',ylabel='my y title',xlabel ='my x title')
+
+
+########################################################
+
+
+
